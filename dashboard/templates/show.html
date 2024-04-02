@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="midde_cont">
+    <div class="container-fluid">
+       <div class="row column_title">
+          <div class="col-md-12">
+            <div class="page_title">
+              <h2>Dashboard</h2>
+            </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+ <table class="table" style="color: black ">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Title</th>
+        <th scope="col">Image</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+       {% for i in context %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td><a href="{% url 'show' i.id %}">{{i.name}}</a></td>
+        <td>{{i.title}}</td>
+               
+        <td> <img src="/media/{{i.image}}" alt="no img" style="width:60px; heigth: 60px;"></td>
+        <td><a href="{% url 'product_edit' i.id %}" style="color: black">Edit</a> ||
+          <a href="{% url 'product_delete' i.id %}" style="color: red;" onclick="return confirmdelete()">Delete</a></td>
+      </tr>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <script>
+    function confirmdelete(){
+       return confirm("Are you Sure Delete");
+     }
+ </script>
+
+{% endblock content %}

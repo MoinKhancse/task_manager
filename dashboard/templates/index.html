@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="midde_cont">
+    <div class="container-fluid">
+       <div class="row column_title">
+          <div class="col-md-12">
+            <div class="page_title">
+              <h2>Dashboard</h2>
+            </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="product_name" style="color: black"class="form-label">Product Name</label>
+      <input type="text" name="product_name" class="form-control" id="product_name">
+    </div>
+    <div class="mb-3">
+        <label for="product_title" style="color: black"class="form-label">Product Title</label>
+        <input type="text" name="product_title" class="form-control" id="product_title">
+      </div>
+    <div class="mb-3">
+      <label for="product_category" style="color: black"class="form-label">Product Category</label>
+      <select name="product_category" class="form-control" id="product_category">
+          <option value="" disabled selected>Selects An Option</option>
+          <option value="">Low</option>
+          <option value="">High</option>
+          <option value="">Medium</option>
+      </select>
+          
+    </div>
+    <div class="mb-3">
+      <label for="product_img" style="color: black" class="form-label">Product Image</label>
+      <input type="file" name="product_img"class="form-control" id="product_img" multiple>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+{% endblock content %}
